@@ -14,7 +14,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
         EventHandler<KeyEvent> {
 
     private final Stage stage;
-    private final Group group;
+    private final Group root;
 
     private HashMap<Coordinates, SudokuTextField> textFieldCoordinates;
 
@@ -29,6 +29,21 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     private static final Color BOARD_BACKGROUND_C0LOR = Color.rgb(224,242, 241);
     private static final String SUDOKU = "Sudoku";
 
+    public UserInterfaceImpl(Stage stage) {
+        this.stage = stage;
+        this.root = new Group();
+        this.textFieldCoordinates = new HashMap<>();
+        initializeUserInterface();
+    }
+
+    private void initializeUserInterface() {
+        drawBackgroung(root);
+        drawTitle(root);
+        drawSudokuStage(root);
+        drawTextFields(root);
+        drawGrigLines(root);
+        stage.show();
+    }
 
     @Override
     public void handle(KeyEvent keyEvent) {
