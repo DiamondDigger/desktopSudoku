@@ -51,7 +51,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
         int index = 0;
         while (index < 8) {
             int thickness;
-            if (index == 2 || 5) {
+            if (index == 2 || index == 5) {
                 thickness = 3;
             } else {
                 thickness = 2;
