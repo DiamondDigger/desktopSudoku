@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sudoku.problemdomain.Coordinates;
 import sudoku.problemdomain.SudokuGame;
@@ -41,8 +42,57 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
         drawTitle(root);
         drawSudokuStage(root);
         drawTextFields(root);
-        drawGrigLines(root);
+        drawGridLines(root);
         stage.show();
+    }
+
+    private void drawGridLines(Group root) {
+        int xAndY = 114;
+        int index = 0;
+        while (index < 8) {
+            int thickness;
+            if (index == 2 || 5) {
+                thickness = 3;
+            } else {
+                thickness = 2;
+            }
+
+            Rectangle verticalLine = getLine(
+                    xAndY + 64 * index,
+                    BOARD_PADDING,
+                    BOARD_X_AND_Y,
+                    thickness
+            );
+        }
+    }
+
+    private Rectangle getLine(double x,
+                              double y,
+                              double height,
+                              double width) {
+
+        Rectangle line = new Rectangle();
+
+        line.setX(x);
+        line.setY(y);
+        line.setHeight(height);
+        line.setWidth(width);
+
+        line.setFill(Color.BLACK);
+
+        return line;
+    }
+
+    private void drawTextFields(Group root) {
+    }
+
+    private void drawSudokuStage(Group root) {
+    }
+
+    private void drawTitle(Group root) {
+    }
+
+    private void drawBackgroung(Group root) {
     }
 
     @Override
