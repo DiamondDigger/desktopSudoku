@@ -41,9 +41,9 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     }
 
     private void initializeUserInterface() {
-        drawBackgroung(root);
+        drawBackground(root);
         drawTitle(root);
-        drawSudokuStage(root);
+        drawSudokuBoard(root);
         drawTextFields(root);
         drawGridLines(root);
         stage.show();
@@ -114,6 +114,12 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
                 SudokuTextField tile = new SudokuTextField(xIndex, yIndex);
 
                 styleSudokuTile(tile, x, y);
+
+                tile.setOnKeyPressed(this);
+
+                textFieldCoordinates.put(new Coordinates(xIndex, yIndex), tile);
+
+                root.getChildren().add(tile);
             }
         }
     }
@@ -130,13 +136,24 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
         tile.setBackground(Background.EMPTY);
     }
 
-    private void drawSudokuStage(Group root) {
+    private void drawSudokuBoard(Group root) {
+        Rectangle boardBackground = new Rectangle();
+
+        boardBackground.setX(BOARD_PADDING);
+        boardBackground.setX(BOARD_PADDING);
+
+        boardBackground.setHeight(BOARD_X_AND_Y);
+        boardBackground.setWidth(BOARD_X_AND_Y);
+
+        boardBackground.setFill(BOARD_BACKGROUND_C0LOR);
+
+        root.getChildren().addAll(boardBackground);
     }
 
     private void drawTitle(Group root) {
     }
 
-    private void drawBackgroung(Group root) {
+    private void drawBackground(Group root) {
     }
 
     @Override
