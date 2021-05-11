@@ -3,6 +3,7 @@ package sudoku.userinterface;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
@@ -162,6 +163,9 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     }
 
     private void drawBackground(Group root) {
+        Scene scene = new Scene(root, WINDOW_X, WINDOW_Y);
+        scene.setFill(WINDOW_BACKGROUND_C0LOR);
+        stage.setScene(scene);
     }
 
     @Override
